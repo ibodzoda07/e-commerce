@@ -1,0 +1,26 @@
+<div class="header">
+    <h1>E-commerce shop from FakestoreApi</h1>
+</div>
+
+<main class="main container">
+  @for (product of products(); track product.id) {
+    <div class="card-wrapper">
+        <div class="card">
+            <img [src]="product.image" [alt]="product.title">
+            <div class="card-info-wraper">
+                <div class="card-info">
+                    <h2>{{ product.title}}</h2>
+                    <p>{{ product.description | truncate:100 }}</p>
+                    <span class="card-rating"><i class="bi bi-star-fill"></i> {{ product.rating.rate }}</span>
+                    <span class="card-category"><i class="bi bi-grid-fill"></i> {{ product.category }}</span>
+                    <span class="card-price"><i class="bi bi-cash-coin"></i>  {{ product.price | currency:'USD' }}</span>
+                </div>
+                <button class="add-to-cart-btn" type="submit"><i class="bi bi-cart2"></i>Add to cart</button>
+            </div>
+        </div>
+    </div>
+  } @empty {
+    <p class="empty-message">Товары не найдены.</p>
+  }
+</main>
+    

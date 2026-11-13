@@ -1,21 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ProductService } from './services/product-service';
-import { IProduct } from './models/product_model';
+import { Component, signal } from '@angular/core'
+import { Card} from './components/card/card';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Card],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('e-commerce');
-  protected readonly products = signal<IProduct[]>([]);
-
-  constructor(private readonly productService: ProductService) {
-    this.productService.getAllProducts().subscribe((res) => {
-      this.products.set(res);
-    });
-  }
+  
 }
